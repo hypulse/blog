@@ -21,4 +21,9 @@ type Post = DefaultPbFields & {
   tags: Tag[];
 };
 
-export type { Tag, PostType, PostStatus, Post };
+type PageProps = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export type { Tag, PostType, PostStatus, Post, PageProps };
