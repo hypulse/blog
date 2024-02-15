@@ -11,7 +11,7 @@ export async function GET(req: Request) {
       filter: [`type = "${type}"`, `status = "published"`].join(" && "),
       fields:
         "id,created,updated,title,thumbnail,type,status,tags,expand,content:excerpt(200,true)",
-      sort: "updated",
+      sort: "-updated",
       expand: "tags",
       skipTotal: true,
     });
