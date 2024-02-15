@@ -6,6 +6,7 @@ import getPosts from "@/utils/getData/getPosts";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import TagList from "../TagList";
+import thumbnailUrl from "@/utils/thumbnailUrl";
 
 export default function ArticleList() {
   const [items, setItems] = useState<Post[]>([]);
@@ -27,9 +28,7 @@ export default function ArticleList() {
             {thumbnail && (
               <div className="avatar mr-4">
                 <div className="w-32 rounded">
-                  <img
-                    src={`http://localhost:8080/api/files/posts/${id}/${thumbnail}?thumb=128x128`}
-                  />
+                  <img src={thumbnailUrl(id, thumbnail)} />
                 </div>
               </div>
             )}
