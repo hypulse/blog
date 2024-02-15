@@ -1,7 +1,8 @@
 import { Post } from "@/types/types-post";
+import TagList from "../TagList";
 
 export default function ArticleView({
-  post: { title, content, created },
+  post: { title, content, created, expand },
 }: {
   post: Post;
 }) {
@@ -13,6 +14,9 @@ export default function ArticleView({
         className="prose"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
+      <div className="flex flex-wrap gap-2">
+        <TagList tags={expand?.tags} />
+      </div>
     </div>
   );
 }

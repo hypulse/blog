@@ -5,6 +5,7 @@ import { Post } from "@/types/types-post";
 import getPosts from "@/utils/getData/getPosts";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import TagList from "../TagList";
 
 export default function ArticleList() {
   const [items, setItems] = useState<Post[]>([]);
@@ -21,7 +22,7 @@ export default function ArticleList() {
   return (
     <div>
       <ul className="space-y-16">
-        {items.map(({ id, thumbnail, title, content, updated }) => (
+        {items.map(({ id, thumbnail, title, content, updated, expand }) => (
           <li key={id} className="flex">
             {thumbnail && (
               <div className="avatar mr-4">
@@ -37,6 +38,7 @@ export default function ArticleList() {
                 <h3>{title}</h3>
                 <p>{content}</p>
               </Link>
+              <TagList tags={expand?.tags} />
               <span>{updated}</span>
             </div>
           </li>
