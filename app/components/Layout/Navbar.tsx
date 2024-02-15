@@ -35,7 +35,7 @@ export default function Navbar() {
           {BLOG_NAME}
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {routes.map((route, index) => (
             <li key={index}>
@@ -43,11 +43,6 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-      </div>
-      <div className="navbar-end">
-        <Link href="/search" className="btn">
-          Search
-        </Link>
       </div>
     </div>
   );

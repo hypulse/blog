@@ -13,8 +13,8 @@ const routes: Route[] = [
     path: "/snippets",
   },
   {
-    name: "Tags",
-    path: "/tags",
+    name: "Search",
+    path: "/search",
   },
 ];
 
