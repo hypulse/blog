@@ -1,22 +1,32 @@
 import { Post } from "@/types/types-post";
 import TagList from "../TagList";
+import thumbnailUrl from "@/utils/thumbnailUrl";
 
 export default function ArticleView({
-  post: { title, content, created, expand },
+  post: { id, title, content, created, expand, thumbnail },
 }: {
   post: Post;
 }) {
   return (
     <div>
-      <h1>{title}</h1>
-      <span className="block">{created}</span>
       <div
-        className="prose"
-        dangerouslySetInnerHTML={{ __html: content }}
-      ></div>
-      <div className="flex flex-wrap gap-2">
-        <TagList tags={expand?.tags} />
+        className="absolute w-full h-64 left-0 hero"
+        style={{
+          backgroundImage: `url(${thumbnailUrl(id, thumbnail)})`,
+        }}
+      >
+        <div className="hero-overlay bg-opacity-60"></div>
+        <div className="text-neutral-content max-w-screen-sm w-full p-4 mx-auto">
+          <h1>{title}</h1>
+          <TagList tags={expand?.tags} />
+          <span className="block">{created}</span>
+        </div>
       </div>
+      <div className="h-64"></div>
+      <div
+        className="prose mt-16"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </div>
   );
 }
