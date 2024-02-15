@@ -1,3 +1,4 @@
+import { RouteContext } from "@/types/types";
 import { NextResponse } from "next/server";
 import PocketBase from "pocketbase";
 
@@ -5,13 +6,7 @@ const pb = new PocketBase(process.env.POCKETBASE_URL);
 
 export async function GET(
   req: Request,
-  {
-    params: { id },
-  }: {
-    params: {
-      id: string;
-    };
-  }
+  { params: { id } }: RouteContext<{ id: string }>
 ) {
   try {
     const post = await pb.collection("posts").getOne(id, { expand: "tags" });
