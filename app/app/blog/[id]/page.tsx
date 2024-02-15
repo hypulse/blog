@@ -25,7 +25,7 @@ export async function generateMetadata(
 export default async function Page({
   params: { id },
 }: PageProps<{ id: string }>) {
-  const data = await getPost(id);
+  const post = await getPost(id);
 
-  return <ArticleView post={data} />;
+  return <ArticleView post={post} />;
 }

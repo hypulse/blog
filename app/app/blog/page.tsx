@@ -1,5 +1,5 @@
-import PostList from "@/components/PostList";
+import ArticleList from "@/components/Article/ArticleList";
 
 export default function Page() {
-  return <PostList type="article" />;
+  return <ArticleList />;
 }
