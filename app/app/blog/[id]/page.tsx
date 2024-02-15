@@ -2,6 +2,7 @@ import ArticleView from "@/components/Article/ArticleView";
 import { PageProps } from "@/types/types";
 import { BLOG_NAME } from "@/utils/constants";
 import getPost from "@/utils/getData/getPost";
+import thumbnailUrl from "@/utils/thumbnailUrl";
 import { Metadata, ResolvingMetadata } from "next";
 
 export async function generateMetadata(
@@ -12,7 +13,7 @@ export async function generateMetadata(
 
   const images = (await parent).openGraph?.images || [];
   if (thumbnail) {
-    images.unshift(thumbnail);
+    images.unshift(thumbnailUrl(id, thumbnail));
   }
 
   return {
