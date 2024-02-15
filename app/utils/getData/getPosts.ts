@@ -1,8 +1,8 @@
 import { Post, PostType } from "@/types/types-post";
 
 async function getPosts(
-  page: number = 1,
-  type: PostType = "article"
+  page: number,
+  type: PostType
 ): Promise<{
   items: Post[];
 }> {
