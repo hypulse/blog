@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import TagList from "../TagList";
 import thumbnailUrl from "@/utils/thumbnailUrl";
+import dateText from "@/utils/dateText";
 
 export default function ArticleList() {
   const [items, setItems] = useState<Post[]>([]);
@@ -32,13 +33,15 @@ export default function ArticleList() {
                 </div>
               </div>
             )}
-            <div>
+            <div className="grow">
               <Link href={`blog/${id}`} className="hover:underline">
-                <h3>{title}</h3>
-                <p>{content}</p>
+                <h3 className="text-2xl">{title}</h3>
+                <p className="text-xl">{content}</p>
               </Link>
               <TagList tags={expand?.tags} />
-              <span>{updated}</span>
+              <span className="block text-sm text-primary">
+                {dateText(updated)}
+              </span>
             </div>
           </li>
         ))}
