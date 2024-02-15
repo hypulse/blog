@@ -17,7 +17,7 @@ export default function ArticleView({
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="text-neutral-content max-w-screen-sm w-full p-4 mx-auto">
+        <div className="text-neutral-content max-w-screen-sm w-full p-4 mx-auto space-y-4">
           <h1 className="text-4xl">{title}</h1>
           <TagList tags={expand?.tags} />
           <span className="block">{dateText(created)}</span>

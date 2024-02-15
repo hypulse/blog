@@ -33,10 +33,10 @@ export default function ArticleList() {
                 </div>
               </div>
             )}
-            <div className="grow">
+            <div className="grow space-y-2">
               <Link href={`blog/${id}`} className="hover:underline">
                 <h3 className="text-2xl">{title}</h3>
-                <p className="text-xl">{content}</p>
+                <p className="text-xl text-gray-500">{content}</p>
               </Link>
               <TagList tags={expand?.tags} />
               <span className="block text-sm text-primary">
