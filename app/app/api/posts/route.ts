@@ -9,6 +9,8 @@ export async function GET(req: Request) {
     const type = new URL(req.url).searchParams.get("type") || "article";
     const post = await pb.collection("posts").getList(Number(page), 10, {
       filter: [`type = "${type}"`, `status = "published"`].join(" && "),
+      fields:
+        "id,created,updated,title,thumbnail,type,status,tags,expand,content:excerpt(200,true)",
       sort: "updated",
       expand: "tags",
       skipTotal: true,

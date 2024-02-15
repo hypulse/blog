@@ -16,6 +16,7 @@ type PostStatus = "draft" | "published" | "archived";
 type Post = DefaultPbFields & {
   title: string;
   content: string;
+  thumbnail?: string;
   type: PostType;
   status: PostStatus;
   tags: Tag[];
