@@ -1,32 +1,31 @@
+import ArticleView from "@/components/Article/ArticleView";
 import { PageProps } from "@/types/types";
 import getPost from "@/utils/getData/getPost";
-import { getMetaTitle } from "@/utils/metadata-utils";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const id = params.id;
+export async function generateMetadata(
+  { params: { id } }: PageProps<{ id: string }>,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { title, thumbnail } = await getPost(id);
 
-  const data = await getPost(id);
+  const images = (await parent).openGraph?.images || [];
+  if (thumbnail) {
+    images.unshift(thumbnail);
+  }
 
   return {
-    title: getMetaTitle(data.title),
+    title,
+    openGraph: {
+      images,
+    },
   };
 }
 
-export default async function Page({ params: { id } }: PageProps) {
+export default async function Page({
+  params: { id },
+}: PageProps<{ id: string }>) {
   const data = await getPost(id);
 
-  return (
-    <article>
-      <h1 className="text-6xl">{data.title}</h1>
-      <div
-        className="prose"
-        dangerouslySetInnerHTML={{
-          __html: data.content,
-        }}
-      ></div>
-    </article>
-  );
+  return <ArticleView post={data} />;
 }
