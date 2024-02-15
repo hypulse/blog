@@ -9,10 +9,6 @@ const routes: Route[] = [
     path: "/blog",
   },
   {
-    name: "Snippets",
-    path: "/snippets",
-  },
-  {
     name: "Search",
     path: "/search",
   },

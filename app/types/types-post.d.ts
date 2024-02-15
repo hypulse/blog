@@ -1,7 +1,7 @@
 import { DefaultPbFields } from "./types";
 import { Tag } from "./types-tag";
 
-type PostType = "article" | "snippet";
+type PostType = "article";
 type PostState = "draft" | "published" | "archived";
 
 type Post = DefaultPbFields & {

@@ -1,6 +1,6 @@
 import { PostState, PostType } from "../types/types-post";
 
-const POST_TYPES: PostType[] = ["article", "snippet"];
+const POST_TYPES: PostType[] = ["article"];
 const POST_STATES: PostState[] = ["draft", "published", "archived"];
 const BLOG_NAME = "My Blog";
 
