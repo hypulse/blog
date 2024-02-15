@@ -19,11 +19,14 @@ export default async function Page({ params: { id } }: PageProps) {
   const data = await getPost(id);
 
   return (
-    <article
-      className="prose"
-      dangerouslySetInnerHTML={{
-        __html: `<h1>${data.title}</h1>${data.content}`,
-      }}
-    />
+    <article>
+      <h1 className="text-6xl">{data.title}</h1>
+      <div
+        className="prose"
+        dangerouslySetInnerHTML={{
+          __html: data.content,
+        }}
+      ></div>
+    </article>
   );
 }
