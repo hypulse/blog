@@ -1,6 +1,8 @@
-import { PostStatus, PostType } from "./types";
+import { PostState, PostType } from "./types-post";
 
 const PostTypes: PostType[] = ["article", "snippet"];
-const PostStatuses: PostStatus[] = ["draft", "published", "archived"];
+const PostStates: PostState[] = ["draft", "published", "archived"];
 
-export { PostTypes, PostStatuses };
+const BLOG_NAME = "My Blog";
+
+export { PostTypes, PostStates, BLOG_NAME };

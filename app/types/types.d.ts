@@ -5,32 +5,13 @@ type DefaultPbFields = {
   updated: string;
 };
 
-type Tag = DefaultPbFields & {
-  name: string;
-};
-
-type PostType = "article" | "snippet";
-
-type PostStatus = "draft" | "published" | "archived";
-
-type Post = DefaultPbFields & {
-  title: string;
-  content: string;
-  thumbnail?: string;
-  type: PostType;
-  status: PostStatus;
-  tags: Tag[];
-};
-
-type ExpandedPost = Post & {
-  expand?: {
-    tags: Tag[];
-  };
-};
-
-type PageProps = {
-  params: { id: string };
+type PageProps<T> = {
+  params: T;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export type { Tag, PostType, PostStatus, Post, ExpandedPost, PageProps };
+type RouteContext<T> = {
+  params: T;
+};
+
+export type { DefaultPbFields, PageProps, RouteContext };
