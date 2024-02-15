@@ -1,10 +1,10 @@
-import { ExpandedPost, PostType } from "@/types/types";
+import { Post, PostType } from "@/types/types-post";
 
 async function getPosts(
   page: number = 1,
   type: PostType = "article"
 ): Promise<{
-  items: ExpandedPost[];
+  items: Post[];
 }> {
   const res = await fetch(
     (process.env.APP_URL || "") + `/api/posts?page=${page}&type=${type}`

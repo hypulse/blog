@@ -1,6 +1,6 @@
-import { ExpandedPost } from "@/types/types";
+import { Post } from "@/types/types-post";
 
-async function getPost(id: string): Promise<ExpandedPost> {
+async function getPost(id: string): Promise<Post> {
   const res = await fetch((process.env.APP_URL || "") + `/api/posts/${id}`);
 
   if (!res.ok) {
