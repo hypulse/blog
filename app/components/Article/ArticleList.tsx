@@ -28,7 +28,7 @@ export default function ArticleList() {
           <li key={id} className="flex">
             {thumbnail && (
               <div className="avatar mr-4">
-                <div className="w-32 rounded">
+                <div className="w-32">
                   <img src={thumbnailUrl(id, thumbnail)} />
                 </div>
               </div>
