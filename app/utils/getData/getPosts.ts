@@ -2,12 +2,15 @@ import { Post, PostType } from "@/types/types-post";
 
 async function getPosts(
   page: number,
-  type: PostType
+  type: PostType,
+  q?: string,
+  tags?: string
 ): Promise<{
   items: Post[];
 }> {
   const res = await fetch(
-    (process.env.APP_URL || "") + `/api/posts?page=${page}&type=${type}`
+    (process.env.APP_URL || "") +
+      `/api/posts?page=${page}&type=${type}&q=${q}&tags=${tags}`
   );
 
   if (!res.ok) {

@@ -13,7 +13,10 @@ export default function ArticleList() {
   const [items, setItems] = useState<Post[]>([]);
   const page = useRef(1);
   const { loaderRef } = useInfiniteScroll(async () => {
-    const { items } = await getPosts(page.current++, "article");
+    const search = new URLSearchParams(window.location.search);
+    const q = search.get("q") || "";
+    const tags = search.get("tags") || "";
+    const { items } = await getPosts(page.current++, "article", q, tags);
     if (items.length === 0) {
       return "END_REACHED";
     }
