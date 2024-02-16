@@ -79,11 +79,15 @@ export default function SearchBox() {
           </button>
         </div>
       </form>
-      <div className="flex flex-wrap gap-x-4 gap-y-2">
+      <div className="flex flex-wrap gap-2">
         {tagsSort(tags)
           .filter((tag) => !selectedTags.some((t) => t.id === tag.id))
           .map((tag) => (
-            <button key={tag.id} className="btn" onClick={() => addTag(tag)}>
+            <button
+              key={tag.id}
+              className="btn btn-sm btn-ghost"
+              onClick={() => addTag(tag)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="1em"
