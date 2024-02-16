@@ -12,7 +12,7 @@ import dateText from "@/utils/dateText";
 export default function ArticleList() {
   const [items, setItems] = useState<Post[]>([]);
   const page = useRef(1);
-  const { loaderRef } = useInfiniteScroll(async () => {
+  const { loaderRef, scrollState } = useInfiniteScroll(async () => {
     const search = new URLSearchParams(window.location.search);
     const q = search.get("q") || "";
     const tags = search.get("tags") || "";
@@ -23,6 +23,18 @@ export default function ArticleList() {
     setItems((prev) => [...prev, ...items]);
     return "IDLE";
   });
+
+  if (items.length === 0 && scrollState === "END_REACHED") {
+    return (
+      <p className="text-center">
+        No articles found.
+        <br />
+        <a href="/" className="btn btn-primary">
+          Go Home
+        </a>
+      </p>
+    );
+  }
 
   return (
     <div>

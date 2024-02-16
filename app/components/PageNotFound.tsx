@@ -1,7 +1,11 @@
 export default function PageNotFound() {
   return (
-    <div className="flex justify-center">
-      <h1 className="text-4xl">Page not found</h1>
-    </div>
+    <p className="text-center">
+      Page not found.
+      <br />
+      <a href="/" className="btn btn-primary">
+        Go Home
+      </a>
+    </p>
   );
 }
