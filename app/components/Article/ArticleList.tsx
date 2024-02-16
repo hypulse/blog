@@ -25,7 +25,7 @@ export default function ArticleList() {
     <div>
       <ul className="space-y-16">
         {items.map(({ id, thumbnail, title, content, updated, expand }) => (
-          <li key={id} className="flex">
+          <li key={id} className="flex items-start">
             {thumbnail && (
               <div className="avatar mr-4">
                 <div className="w-32">
