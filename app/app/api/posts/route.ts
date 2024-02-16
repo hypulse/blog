@@ -12,7 +12,7 @@ export async function GET(req: Request) {
 
     const filters = [];
     if (q) {
-      const queryFilter = `(title ~ "${q}"` || `content ~ "${q}")`;
+      const queryFilter = `(title ~ "${q}" || content ~ "${q}")`;
       filters.push(queryFilter);
     }
     if (tags) {
