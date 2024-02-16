@@ -5,7 +5,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
-      <main className="max-w-screen-sm mx-auto px-4 py-8">{children}</main>
+      <main className="max-w-screen-sm mx-auto px-4">{children}</main>
       <Footer />
     </>
   );
