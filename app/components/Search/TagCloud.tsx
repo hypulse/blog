@@ -15,7 +15,7 @@ export default function TagCloud() {
   return (
     <div className="flex flex-wrap gap-x-4 gap-y-2">
       {tags.map(({ id, name }) => (
-        <Link href={`/blog?tag=${id}`} className="btn btn-outline">
+        <Link key={id} href={`/blog?tags=${id}`} className="btn btn-outline">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="1em"
