@@ -10,11 +10,6 @@ export async function GET(req: Request) {
   } catch (err) {
     console.error("Failed to fetch tags:", err);
 
-    // @ts-expect-error
-    if (err.isAbort) {
-      return new Response(null, { status: 429 });
-    }
-
     return new Response(JSON.stringify({ error: "Failed to fetch tags" }), {
       status: 500,
       headers: {
