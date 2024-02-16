@@ -1,9 +1,10 @@
 import { Tag } from "@/types/types-tag";
+import tagsSort from "@/utils/tagsSort";
 
 export default function ArticleTags({ tags }: { tags?: Tag[] }) {
   if (!tags || tags.length === 0) return null;
 
-  tags = tags.sort((a, b) => a.name.localeCompare(b.name));
+  tags = tagsSort(tags);
 
   return (
     <div className="flex flex-wrap gap-2">
