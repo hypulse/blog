@@ -1,5 +1,5 @@
 import { Post } from "@/types/types-post";
-import TagList from "../TagList";
+import ArticleTags from "./ArticleTags";
 import thumbnailUrl from "@/utils/thumbnailUrl";
 import dateText from "@/utils/dateText";
 
@@ -19,7 +19,7 @@ export default function ArticleView({
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="text-neutral-content max-w-screen-sm w-full p-4 mx-auto space-y-4">
           <h1 className="text-4xl">{title}</h1>
-          <TagList tags={expand?.tags} />
+          <ArticleTags tags={expand?.tags} />
           <span className="block">{dateText(created)}</span>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { Post } from "@/types/types-post";
 import getPosts from "@/utils/getData/getPosts";
 import Link from "next/link";
 import { useRef, useState } from "react";
-import TagList from "../TagList";
+import ArticleTags from "./ArticleTags";
 import thumbnailUrl from "@/utils/thumbnailUrl";
 import dateText from "@/utils/dateText";
 
@@ -38,7 +38,7 @@ export default function ArticleList() {
                 <h3 className="text-2xl">{title}</h3>
                 <p className="text-xl text-gray-500">{content}</p>
               </Link>
-              <TagList tags={expand?.tags} />
+              <ArticleTags tags={expand?.tags} />
               <span className="block text-sm text-primary">
                 {dateText(updated)}
               </span>

@@ -1,6 +1,6 @@
 import { Tag } from "@/types/types-tag";
 
-export default function TagList({ tags }: { tags?: Tag[] }) {
+export default function ArticleTags({ tags }: { tags?: Tag[] }) {
   if (!tags || tags.length === 0) return null;
 
   tags = tags.sort((a, b) => a.name.localeCompare(b.name));
