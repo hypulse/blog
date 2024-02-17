@@ -1,9 +1,7 @@
-type Route = {
-  name: string;
-  path: string;
-};
-
-const routes: Route[] = [
+/**
+ * Array of routes for the Navbar menu
+ */
+const routes: { name: string; path: string }[] = [
   {
     name: "Blog",
     path: "/blog",

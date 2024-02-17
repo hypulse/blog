@@ -1,3 +1,9 @@
+/**
+ * Returns the URL of the thumbnail of a post (pocketbase file)
+ * @param id
+ * @param thumbnail
+ * @returns
+ */
 const thumbnailUrl = (id: string, thumbnail?: string) => {
   if (!thumbnail) {
     return "";
