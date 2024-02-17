@@ -8,6 +8,7 @@ import { useRef, useState } from "react";
 import ArticleTags from "./ArticleTags";
 import thumbnailUrl from "@/utils/thumbnailUrl";
 import dateText from "@/utils/dateText";
+import NoArticlesFound from "../ErrorViews/NoArticlesFound";
 
 export default function ArticleList() {
   const [items, setItems] = useState<Post[]>([]);
@@ -25,15 +26,7 @@ export default function ArticleList() {
   });
 
   if (items.length === 0 && scrollState === "END_REACHED") {
-    return (
-      <p className="text-center">
-        No articles found.
-        <br />
-        <a href="/" className="btn btn-primary">
-          Go Home
-        </a>
-      </p>
-    );
+    return <NoArticlesFound />;
   }
 
   return (
