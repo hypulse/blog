@@ -5,6 +5,8 @@ import getTags from "@/utils/getData/getTags";
 import tagsSort from "@/utils/tagsSort";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { FormTagButtons } from "./FormTagButtons";
+import { TagButtons } from "./TagButtons";
 
 export default function SearchBox() {
   const router = useRouter();
@@ -15,6 +17,8 @@ export default function SearchBox() {
   useEffect(() => {
     getTags().then(setTags);
   }, []);
+
+  const isSearchable = query.length > 0 || selectedTags.length > 0;
 
   const addTag = (tag: Tag) => {
     if (selectedTags.some((t) => t.id === tag.id)) {
@@ -40,25 +44,11 @@ export default function SearchBox() {
         <div className="input input-bordered h-auto flex flex-col mb-3">
           <div className="flex flex-wrap gap-2">
             {tagsSort(selectedTags).map((tag) => (
-              <button
+              <FormTagButtons
                 key={tag.id}
-                className="btn btn-sm"
+                name={tag.name}
                 onClick={() => removeTag(tag)}
-              >
-                {tag.name}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 24 24"
-                  className="opacity-70"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12z"
-                  ></path>
-                </svg>
-              </button>
+              />
             ))}
           </div>
           <input
@@ -73,7 +63,7 @@ export default function SearchBox() {
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={!(query.length > 0 || selectedTags.length > 0)}
+            disabled={!isSearchable}
           >
             Search
           </button>
@@ -83,24 +73,11 @@ export default function SearchBox() {
         {tagsSort(tags)
           .filter((tag) => !selectedTags.some((t) => t.id === tag.id))
           .map((tag) => (
-            <button
+            <TagButtons
               key={tag.id}
-              className="btn btn-sm btn-ghost"
+              name={tag.name}
               onClick={() => addTag(tag)}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="currentColor"
-                  d="M5.5 7A1.5 1.5 0 0 1 4 5.5A1.5 1.5 0 0 1 5.5 4A1.5 1.5 0 0 1 7 5.5A1.5 1.5 0 0 1 5.5 7m15.91 4.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.11 0-2 .89-2 2v7c0 .55.22 1.05.59 1.41l8.99 9c.37.36.87.59 1.42.59c.55 0 1.05-.23 1.41-.59l7-7c.37-.36.59-.86.59-1.41c0-.56-.23-1.06-.59-1.42"
-                ></path>
-              </svg>
-              {tag.name}
-            </button>
+            />
           ))}
       </div>
     </>
