@@ -10,7 +10,7 @@ export async function GET(
 ) {
   try {
     const post = await pb.collection("posts").getOne(id, { expand: "tags" });
-    if (post.status !== "published") {
+    if (post.state !== "published") {
       throw new Error("Post not found");
     }
     return NextResponse.json(post);

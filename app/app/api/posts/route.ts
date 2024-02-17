@@ -22,13 +22,13 @@ export async function GET(req: Request) {
 
     const post = await pb.collection("posts").getList(Number(page), 10, {
       filter: [
-        `status = "published"`,
+        `state = "published"`,
         `type = "${type}"`,
         `content ~ "${q}"`,
         ...filters,
       ].join(" && "),
       fields:
-        "id,created,updated,title,thumbnail,type,status,tags,expand,content:excerpt(200,true)",
+        "id,created,updated,title,thumbnail,type,state,tags,expand,content:excerpt(200,true)",
       sort: "-updated",
       expand: "tags",
       skipTotal: true,
