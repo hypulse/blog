@@ -2,7 +2,7 @@
 
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { Post } from "@/types/types-post";
-import getPosts from "@/utils/getData/getPosts";
+import getPosts from "@/utils/api/getPosts";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import ArticleTags from "./ArticleTags";

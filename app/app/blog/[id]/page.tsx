@@ -1,7 +1,7 @@
 import ArticleView from "@/components/Article/ArticleView";
 import { PageProps } from "@/types/types";
 import { BLOG_NAME } from "@/utils/constants";
-import getPost from "@/utils/getData/getPost";
+import getPost from "@/utils/api/getPost";
 import thumbnailUrl from "@/utils/thumbnailUrl";
 import { Metadata, ResolvingMetadata } from "next";
 

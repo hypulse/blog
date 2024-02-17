@@ -1,7 +1,7 @@
 "use client";
 
 import { Tag } from "@/types/types-tag";
-import getTags from "@/utils/getData/getTags";
+import getTags from "@/utils/api/getTags";
 import tagsSort from "@/utils/tagsSort";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
