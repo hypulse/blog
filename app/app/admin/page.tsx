@@ -1,13 +1,5 @@
-import Dashboard from "@/components/Admin/Dashboard";
-import Login from "@/components/Admin/Login";
-import { auth } from "./actions";
+import AdminHome from "@/components/Admin/AdminHome";
 
 export default async function Page() {
-  const isAuth = await auth();
-
-  if (!isAuth) {
-    return <Login />;
-  }
-
-  return <Dashboard />;
+  return <AdminHome />;
 }
