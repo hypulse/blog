@@ -1,3 +1,4 @@
+import escapeHtml from "@/utils/escapeHtml";
 import { NextResponse } from "next/server";
 import PocketBase from "pocketbase";
 
@@ -7,8 +8,12 @@ export async function GET(req: Request) {
   try {
     const page = new URL(req.url).searchParams.get("page") || "1";
     const type = new URL(req.url).searchParams.get("type") || "article";
-    const q = new URL(req.url).searchParams.get("q") || "";
-    const tags = new URL(req.url).searchParams.get("tags") || "";
+    let q = new URL(req.url).searchParams.get("q") || "";
+    q = escapeHtml(q);
+    let tags = new URL(req.url).searchParams.get("tags") || "";
+    tags = escapeHtml(tags);
+
+    console.log(q);
 
     // Sanitize input
     const filters = [];
