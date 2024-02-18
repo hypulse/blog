@@ -1,6 +1,5 @@
 import Login from "@/components/Admin/Login";
-import { auth, signOut } from "./actions";
-import Link from "next/link";
+import { auth } from "./actions";
 
 export default async function Layout({
   children,
@@ -13,17 +12,5 @@ export default async function Layout({
     return <Login />;
   }
 
-  return (
-    <>
-      <form action={signOut}>
-        <button type="submit" className="btn">
-          Sign out
-        </button>
-      </form>
-      <Link href="/admin" className="btn">
-        Admin Home
-      </Link>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

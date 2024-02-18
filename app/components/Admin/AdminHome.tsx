@@ -1,5 +1,4 @@
-"use client";
-
+import { signOut } from "@/app/admin/actions";
 import Link from "next/link";
 
 export default function AdminHome() {
@@ -17,6 +16,11 @@ export default function AdminHome() {
       <li>
         <Link href="/admin/sync">Sync with GitHub</Link>
       </li>
+      <form action={signOut}>
+        <li>
+          <button type="submit">Sign out</button>
+        </li>
+      </form>
     </ul>
   );
 }
