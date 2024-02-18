@@ -16,6 +16,9 @@ export default function AdminHome() {
       <li>
         <Link href="/admin/sync">Sync with GitHub</Link>
       </li>
+      <li>
+        <Link href={`${process.env.POCKETBASE_URL}/_`}>Open in PocketBase</Link>
+      </li>
       <form action={signOut}>
         <li>
           <button type="submit">Sign out</button>
