@@ -10,23 +10,34 @@ export async function GET(req: Request) {
     const q = new URL(req.url).searchParams.get("q") || "";
     const tags = new URL(req.url).searchParams.get("tags") || "";
 
+    // Sanitize input
     const filters = [];
+    // Post state for user is always published
+    const stateFilter = pb.filter("state = {:state}", {
+      state: "published",
+    });
+    filters.push(stateFilter);
+    // Post type(article, snippet, etc.)
+    // Currently, only state "article" is supported
+    const typeFilter = pb.filter("type = {:type}", { type });
+    filters.push(typeFilter);
+    // Search query
     if (q) {
-      const queryFilter = `(title ~ "${q}" || content ~ "${q}")`;
+      const queryFilter = pb.filter("(title ~ {:q} || content ~ {:q})", {
+        q,
+      });
       filters.push(queryFilter);
     }
+    // Search by tags
     if (tags) {
-      const tagsFilter = tags.split(",").map((tag) => `tags ~ "${tag}"`);
+      const tagsFilter = tags
+        .split(",")
+        .map((tag) => pb.filter("tags ~ {:tag}", { tag }));
       filters.push(...tagsFilter);
     }
 
     const post = await pb.collection("posts").getList(Number(page), 10, {
-      filter: [
-        `state = "published"`,
-        `type = "${type}"`,
-        `content ~ "${q}"`,
-        ...filters,
-      ].join(" && "),
+      filter: filters.join(" && "),
       fields:
         "id,created,updated,title,thumbnail,type,state,tags,expand,content:excerpt(200,true)",
       sort: "-updated",
