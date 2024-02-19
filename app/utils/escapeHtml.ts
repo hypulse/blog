@@ -9,6 +9,11 @@ const ENTITY_MAP: { [key: string]: string } = {
   "=": "&#x3D;",
 };
 
+/**
+ * Escapes special characters in a string to their corresponding HTML entities.
+ * @param string - The string to escape.
+ * @returns The escaped string.
+ */
 function escapeHtml(string: string) {
   return String(string).replace(/[&<>"'`=\/]/g, function (s) {
     return ENTITY_MAP[s];
