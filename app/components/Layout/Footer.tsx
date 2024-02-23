@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded mt-16">
       <nav>
         <div className="grid grid-flow-col gap-4">
-          <Link href="https://github.com/hypulse">
+          <Link href="https://github.com/hypulse" target="_blank">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="1em"
